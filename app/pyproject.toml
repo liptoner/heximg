@@ -1,0 +1,19 @@
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+default_section = "THIRDPARTY"
+known_first_party = "core"
+known_django = "django"
+sections = ["FUTURE","STDLIB","DJANGO","THIRDPARTY","FIRSTPARTY","LOCALFOLDER"]
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main", "mypy_drf_plugin.main"]
+
+[[tool.mypy.overrides]]
+module = "celery.*,parameterized.*"
+ignore_missing_imports = true
+
+[tool.django-stubs]
+django_settings_module = "heximg.settings"
